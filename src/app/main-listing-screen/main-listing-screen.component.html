@@ -1,0 +1,22 @@
+<button (click)="getData()">Top Rated</button>
+<h1>{{singleItem}}</h1>
+<div class="container">
+  <div class="single" *ngFor="let item of Data">
+    <mat-card class="single__Card" *ngIf="item.overview">
+      <img
+        mat-card-image
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        alt="{{ item.name }}"
+        title="{{ item.name }}"
+      />
+      <mat-card-content>
+        <h1>{{ item.name }}</h1>
+        <p>{{ item.overview | truncatePipe: 100 }}</p>
+        <p>voting: {{ item.vote_average }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="getData(item.id)">get details</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
